@@ -6,6 +6,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Item {
 
@@ -76,4 +77,5 @@ public class Item {
     public void setPlace(String place) {
         this.place = place;
     }
+
 }

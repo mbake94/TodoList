@@ -27,7 +27,7 @@
 
 
     <!--Item form begins-->
-    <form th:action="@{/ToDo}" th:object="${item}" method="post">
+    <form th:action="@{/Post}" th:object="${item}" method="post">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
 <!--            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>-->
@@ -63,19 +63,31 @@
 
     </form>
     <hr class="my-4">
-<!--    Cards begin-->
-    <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">[[${item.name}]]</h5>
-                <small class="text-muted">[[${item.date}]]</small>
+
+    <table>
+        <thead>
+        <tr th:if="${cards.size()} == 0">
+            <td>You're all caught up with your tasks today.</td>
+        </tr>
+
+        <tr th:each="item : ${cards}">
+            <!--    Cards begin-->
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">[[${item.name}]]</h5>
+                        <small class="text-muted">[[${item.date}]]</small>
+                    </div>
+                    <p class="mb-1">[[${item.description}]].</p>
+                    <small class="text-muted">This item is for [[${item.place}]]</small>
+                </a>
             </div>
-            <p class="mb-1">[[${item.description}]].</p>
-            <small class="text-muted">This item is for [[${item.place}]]</small>
-        </a>
-    </div>
-<!--    Cards end-->
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <!--    Cards end-->
+        </tr>
+        </thead>
+    </table>
+
+<br><br><br><br><br><br>
 <!--    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>-->
     <a><button type="button" class="btn btn-outline-success">Task Complete</button></a>
     <a><button type="button" class="btn btn-outline-danger">Delete</button></a>
